@@ -14,4 +14,9 @@
     <string name="save">Save</string>
     <string name="result_button">Saved Prediction</string>
     <string name="no_item">No items found</string>
+    <string name="saved_item">Saved</string>
+    <string name="article">Article</string>
+    <string name="title_home">Home</string>
+    <string name="title_saved">Saved Prediction</string>
+    <string name="title_article">Article</string>
 </resources>
