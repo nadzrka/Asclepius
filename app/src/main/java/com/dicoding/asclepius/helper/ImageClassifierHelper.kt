@@ -12,6 +12,7 @@ import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.task.vision.classifier.Classifications
 import org.tensorflow.lite.task.vision.classifier.ImageClassifier
 import org.tensorflow.lite.task.vision.classifier.ImageClassifier.ImageClassifierOptions.*
+import java.util.Locale
 
 
 class ImageClassifierHelper(
@@ -44,7 +45,6 @@ class ImageClassifierHelper(
     }
 
     fun classifyStaticImage(imageUri: Uri) {
-
         val bitmap = toBitmap(imageUri)
         val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, true)
         val image = TensorImage.fromBitmap(resizedBitmap)
@@ -54,25 +54,19 @@ class ImageClassifierHelper(
             classifierListener?.onError(context.getString(R.string.inference_failed))
             return
         }
+        
+        val probabilities = results.first().categories
 
-        val probabilities = results.flatMap { classification ->
-            classification.categories.map { category ->
-                category.score
-            }
-        }
+        val highestCategory = probabilities.firstOrNull()
 
-        val cancerProbability = probabilities.getOrNull(0) ?: 0f
-        val nonCancerProbability = probabilities.getOrNull(1) ?: 0f
-
-        val threshold = 0.5f
-
-        if (cancerProbability > threshold) {
-            classifierListener?.onResults(listOf(cancerProbability))
+        val resultText = if (highestCategory != null) {
+            "${highestCategory.label}: ${String.format(Locale.US, "%.2f", highestCategory.score * 100)}%"
         } else {
-            classifierListener?.onResults(listOf(nonCancerProbability))
+            context.getString(R.string.hasil_tidak_ditemukan)
         }
-    }
 
+        classifierListener?.onResults(resultText)
+    }
 
     private fun toBitmap(imageUri: Uri): Bitmap {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -87,7 +81,7 @@ class ImageClassifierHelper(
     interface ClassifierListener {
         fun onError(error: String)
         fun onResults(
-            results: List<Float>
+            resultText: String
         )
     }
 

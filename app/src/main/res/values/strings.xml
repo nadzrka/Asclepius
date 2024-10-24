@@ -10,4 +10,5 @@
     <string name="no_image_selected">No image selected</string>
     <string name="inference_time">>Inference time: %d ms</string>
     <string name="no_results_found">no result found</string>
+    <string name="hasil_tidak_ditemukan">Hasil tidak ditemukan.</string>
 </resources>
