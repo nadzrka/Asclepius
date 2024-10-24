@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
 
         binding.galleryButton.setOnClickListener { startGallery() }
         binding.analyzeButton.setOnClickListener { analyzeImage() }
+        binding.resultButton.setOnClickListener { openSavedPrediction() }
 
         imageClassifierHelper = ImageClassifierHelper(context = this, classifierListener = this)
     }
@@ -56,6 +57,12 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
             imageClassifierHelper.classifyStaticImage(it)
         } ?: showToast(getString(R.string.no_image_selected))
     }
+
+    private fun openSavedPrediction() {
+        val intent = Intent(this, SavedPredictionActivity::class.java)
+        startActivity(intent)
+    }
+
 
     override fun onError(error: String) {
         showToast(error)
