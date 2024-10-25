@@ -5,10 +5,12 @@ package com.dicoding.asclepius.view.saved
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.dicoding.asclepius.data.local.entity.PredictionEntity
 import com.dicoding.asclepius.data.local.room.PredictionDao
 import com.dicoding.asclepius.view.Result
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PredictionRepository private constructor(
@@ -40,8 +42,8 @@ class PredictionRepository private constructor(
         return result
     }
 
-    fun getPredictionById(id: Int): LiveData<PredictionEntity> {
-        return predictionDao.getItemById(id)
+    suspend fun removePrediction() {
+        predictionDao.deleteItem()
     }
 
     companion object {
