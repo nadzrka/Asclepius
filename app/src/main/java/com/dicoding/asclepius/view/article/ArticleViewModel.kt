@@ -1,4 +1,4 @@
-package com.dicoding.asclepius.view
+package com.dicoding.asclepius.view.article
 
 import android.util.Log
 import androidx.lifecycle.LiveData

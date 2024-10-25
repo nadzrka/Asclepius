@@ -1,4 +1,4 @@
-package com.dicoding.asclepius.view
+package com.dicoding.asclepius.view.saved
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

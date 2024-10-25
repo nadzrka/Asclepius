@@ -1,4 +1,4 @@
-package com.dicoding.asclepius.view
+package com.dicoding.asclepius.view.article
 
 import android.annotation.SuppressLint
 import android.content.Intent

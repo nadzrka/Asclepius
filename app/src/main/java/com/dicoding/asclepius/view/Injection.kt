@@ -4,8 +4,7 @@ package com.dicoding.asclepius.view
 
 import android.content.Context
 import com.dicoding.asclepius.data.local.room.PredictionDatabase
-import com.dicoding.asclepius.PredictionRepository
-import com.dicoding.asclepius.data.remote.retrofit.ApiConfig
+import com.dicoding.asclepius.view.saved.PredictionRepository
 
 object Injection {
     fun providePredictionRepository(context: Context): PredictionRepository {

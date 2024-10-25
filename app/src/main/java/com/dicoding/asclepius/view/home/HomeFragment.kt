@@ -1,4 +1,4 @@
-package com.dicoding.asclepius.view
+package com.dicoding.asclepius.view.home
 
 import android.content.Intent
 import android.net.Uri
@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.Fragment
 import com.dicoding.asclepius.R
 import com.dicoding.asclepius.databinding.FragmentHomeBinding
 import com.dicoding.asclepius.helper.ImageClassifierHelper
@@ -18,6 +17,8 @@ import com.yalantis.ucrop.UCrop
 import java.io.File
 import android.app.Activity
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
+import androidx.fragment.app.Fragment
+import com.dicoding.asclepius.view.result.ResultActivity
 
 class HomeFragment : Fragment(), ImageClassifierHelper.ClassifierListener {
     private lateinit var binding: FragmentHomeBinding

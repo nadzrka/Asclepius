@@ -1,4 +1,4 @@
-package com.dicoding.asclepius.view
+package com.dicoding.asclepius.view.saved
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,12 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.asclepius.databinding.FragmentSavedPredictionBinding
+import com.dicoding.asclepius.view.Result
+import com.dicoding.asclepius.view.ViewModelFactory
 
 class SavedPredictionFragment : Fragment() {
     private var _binding: FragmentSavedPredictionBinding? = null
     private val binding get() = _binding!!
     private val savedPredictionViewModel by viewModels<SavedPredictionViewModel> {
-        ViewModelFactory.getInstance(requireActivity())
+        ViewModelFactory.Companion.getInstance(requireActivity())
     }
     private lateinit var predictionAdapter: PredictionAdapter
 

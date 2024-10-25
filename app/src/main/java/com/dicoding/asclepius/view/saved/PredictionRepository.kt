@@ -1,6 +1,6 @@
 @file:Suppress("unused", "RedundantSuppression")
 
-package com.dicoding.asclepius
+package com.dicoding.asclepius.view.saved
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData

@@ -19,7 +19,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
-            android:name=".view.ResultActivity"
+            android:name=".view.result.ResultActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"

@@ -5,7 +5,10 @@ package com.dicoding.asclepius.view
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.asclepius.PredictionRepository
+import com.dicoding.asclepius.view.saved.PredictionRepository
+import com.dicoding.asclepius.view.article.ArticleViewModel
+import com.dicoding.asclepius.view.result.ResultViewModel
+import com.dicoding.asclepius.view.saved.SavedPredictionViewModel
 
 class ViewModelFactory private constructor(
     private val predictionRepository: PredictionRepository

@@ -1,4 +1,4 @@
-package com.dicoding.asclepius.view
+package com.dicoding.asclepius.view.result
 
 import android.net.Uri
 import android.os.Bundle
@@ -9,10 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.asclepius.R
 import com.dicoding.asclepius.databinding.ActivityResultBinding
 import com.dicoding.asclepius.data.local.entity.PredictionEntity
+import com.dicoding.asclepius.view.ViewModelFactory
 
 class ResultActivity : AppCompatActivity() {
     private val resultViewModel by viewModels<ResultViewModel> {
-        ViewModelFactory.getInstance(application)
+        ViewModelFactory.Companion.getInstance(application)
     }
     private lateinit var binding: ActivityResultBinding
     private lateinit var resultsTextView: TextView
