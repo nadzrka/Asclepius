@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_article"
-        android:name="com.dicoding.asclepius.view.SavedPredictionFragment"
+        android:name="com.dicoding.asclepius.view.ArticleFragment"
         android:label="@string/title_article"
         tools:layout="@layout/fragment_article" />
 </navigation>

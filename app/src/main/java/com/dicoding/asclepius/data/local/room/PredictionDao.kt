@@ -1,10 +1,10 @@
 @file:Suppress("unused", "RedundantSuppression")
 
-package com.dicoding.asclepius.local.room
+package com.dicoding.asclepius.data.local.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.dicoding.asclepius.local.entity.PredictionEntity
+import com.dicoding.asclepius.data.local.entity.PredictionEntity
 
 @Dao
 interface PredictionDao {

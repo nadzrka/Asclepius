@@ -8,7 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.asclepius.R
 import com.dicoding.asclepius.databinding.ActivityResultBinding
-import com.dicoding.asclepius.local.entity.PredictionEntity
+import com.dicoding.asclepius.data.local.entity.PredictionEntity
 
 class ResultActivity : AppCompatActivity() {
     private val resultViewModel by viewModels<ResultViewModel> {

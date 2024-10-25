@@ -5,12 +5,13 @@ package com.dicoding.asclepius.view
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.asclepius.remote.PredictionRepository
+import com.dicoding.asclepius.PredictionRepository
 
 class ViewModelFactory private constructor(
-    private val predictionRepository: PredictionRepository) : ViewModelProvider.NewInstanceFactory() {
+    private val predictionRepository: PredictionRepository
+    ) : ViewModelProvider.NewInstanceFactory() {
 
-    @Suppress("UNCHECKED_CAST")
+        @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(ResultViewModel::class.java) -> {
@@ -19,6 +20,10 @@ class ViewModelFactory private constructor(
 
             modelClass.isAssignableFrom(SavedPredictionViewModel::class.java) -> {
                 SavedPredictionViewModel(predictionRepository) as T
+            }
+
+            modelClass.isAssignableFrom(ArticleViewModel::class.java) -> {
+                ArticleViewModel() as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

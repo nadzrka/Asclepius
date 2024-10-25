@@ -1,12 +1,12 @@
 @file:Suppress("unused", "RedundantSuppression")
 
-package com.dicoding.asclepius.remote
+package com.dicoding.asclepius
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import com.dicoding.asclepius.local.entity.PredictionEntity
-import com.dicoding.asclepius.local.room.PredictionDao
+import com.dicoding.asclepius.data.local.entity.PredictionEntity
+import com.dicoding.asclepius.data.local.room.PredictionDao
 import com.dicoding.asclepius.view.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -34,13 +34,11 @@ class PredictionRepository private constructor(
             if (items.isNotEmpty()) {
                 result.value = Result.Success(items)
             } else {
-                result.value = Result.Error("No favorite events found")
+                result.value = Result.Error("No saved items")
             }
         }
-
         return result
     }
-
 
     fun getPredictionById(id: Int): LiveData<PredictionEntity> {
         return predictionDao.getItemById(id)

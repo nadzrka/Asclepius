@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.asclepius.databinding.ItemRowPredictionBinding
-import com.dicoding.asclepius.local.entity.PredictionEntity
+import com.dicoding.asclepius.data.local.entity.PredictionEntity
 
 class PredictionAdapter : ListAdapter<PredictionEntity, PredictionAdapter.PredictionViewHolder>(DIFF_CALLBACK) {
 

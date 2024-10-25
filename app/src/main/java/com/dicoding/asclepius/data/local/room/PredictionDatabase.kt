@@ -1,12 +1,12 @@
 @file:Suppress("unused", "RedundantSuppression")
 
-package com.dicoding.asclepius.local.room
+package com.dicoding.asclepius.data.local.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.dicoding.asclepius.local.entity.PredictionEntity
+import com.dicoding.asclepius.data.local.entity.PredictionEntity
 
 @Database(entities = [PredictionEntity::class], version = 4, exportSchema = false)
 abstract class PredictionDatabase : RoomDatabase() {

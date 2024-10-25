@@ -19,4 +19,6 @@
     <string name="title_home">Home</string>
     <string name="title_saved">Saved Prediction</string>
     <string name="title_article">Article</string>
+    <string name="title">title\n</string>
+    <string name="published_date">published date</string>
 </resources>

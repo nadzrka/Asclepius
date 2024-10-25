@@ -1,6 +1,6 @@
 @file:Suppress("unused", "RedundantSuppression")
 
-package com.dicoding.asclepius.local.entity
+package com.dicoding.asclepius.data.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
