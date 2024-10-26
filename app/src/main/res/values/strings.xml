@@ -21,4 +21,6 @@
     <string name="title_article">Article</string>
     <string name="title">title\n</string>
     <string name="published_date">published date</string>
+    <string name="no_result_found">No result found</string>
+    <string name="delete">Delete</string>
 </resources>

@@ -1,3 +1,5 @@
+@file:Suppress("unused", "RedundantSuppression")
+
 package com.dicoding.asclepius.helper
 
 import android.content.Context
@@ -62,7 +64,7 @@ class ImageClassifierHelper(
         val resultText = if (highestCategory != null) {
             "${highestCategory.label}: ${String.format(Locale.US, "%.2f", highestCategory.score * 100)}%"
         } else {
-            context.getString(R.string.hasil_tidak_ditemukan)
+            context.getString(R.string.no_result_found)
         }
 
         classifierListener?.onResults(resultText)

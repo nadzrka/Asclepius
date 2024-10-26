@@ -18,7 +18,7 @@
             android:id="@+id/result_image"
             tools:srcCompat="@tools:sample/avatars"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="180dp"
             android:scaleType="fitCenter"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toBottomOf="@id/result_text"
-            android:text="Delete" />
+            android:text="@string/delete" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.dicoding.asclepius.view.article
 
 import android.annotation.SuppressLint

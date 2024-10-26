@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.dicoding.asclepius.view.saved.PredictionRepository
 import com.dicoding.asclepius.view.article.ArticleViewModel
 import com.dicoding.asclepius.view.result.ResultViewModel
-import com.dicoding.asclepius.view.saved.SavedPredictionViewModel
+import com.dicoding.asclepius.view.saved.PredictionViewModel
 
 class ViewModelFactory private constructor(
     private val predictionRepository: PredictionRepository
@@ -21,8 +21,8 @@ class ViewModelFactory private constructor(
                 ResultViewModel(predictionRepository) as T
             }
 
-            modelClass.isAssignableFrom(SavedPredictionViewModel::class.java) -> {
-                SavedPredictionViewModel(predictionRepository) as T
+            modelClass.isAssignableFrom(PredictionViewModel::class.java) -> {
+                PredictionViewModel(predictionRepository) as T
             }
 
             modelClass.isAssignableFrom(ArticleViewModel::class.java) -> {

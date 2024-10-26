@@ -1,3 +1,5 @@
+@file:Suppress("unused", "RedundantSuppression")
+
 package com.dicoding.asclepius.view.saved
 
 import android.os.Bundle
@@ -12,10 +14,10 @@ import com.dicoding.asclepius.databinding.FragmentSavedPredictionBinding
 import com.dicoding.asclepius.view.Result
 import com.dicoding.asclepius.view.ViewModelFactory
 
-class SavedPredictionFragment : Fragment() {
+class PredictionFragment : Fragment() {
     private var _binding: FragmentSavedPredictionBinding? = null
     private val binding get() = _binding!!
-    private val savedPredictionViewModel by viewModels<SavedPredictionViewModel> {
+    private val predictionViewModel by viewModels<PredictionViewModel> {
         ViewModelFactory.getInstance(requireActivity())
     }
     private lateinit var predictionAdapter: PredictionAdapter
@@ -34,13 +36,15 @@ class SavedPredictionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        savedPredictionViewModel.getSavedPrediction().observe(viewLifecycleOwner) { result ->
+        predictionViewModel.getSavedPrediction().observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Success -> {
                     predictionAdapter.submitList(result.data)
                 }
                 is Result.Error -> {
-                    showToast("Error loading predictions: ${result.error}")
+                    binding.rvItems.visibility = View.GONE
+                    binding.tvNoEvent.visibility = View.VISIBLE
+                    showToast(result.error)
                 }
                 is Result.Loading -> {
                     showToast("Loading predictions...")
@@ -50,7 +54,7 @@ class SavedPredictionFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        predictionAdapter = PredictionAdapter()
+        predictionAdapter = PredictionAdapter(predictionViewModel)
         binding.rvItems.apply {
             adapter = predictionAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)

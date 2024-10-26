@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_saved"
-        android:name="com.dicoding.asclepius.view.saved.SavedPredictionFragment"
+        android:name="com.dicoding.asclepius.view.saved.PredictionFragment"
         android:label="@string/title_saved"
         tools:layout="@layout/fragment_saved_prediction" />
 

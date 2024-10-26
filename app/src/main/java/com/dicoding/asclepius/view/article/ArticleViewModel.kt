@@ -1,3 +1,5 @@
+@file:Suppress("unused", "RedundantSuppression")
+
 package com.dicoding.asclepius.view.article
 
 import android.util.Log
@@ -18,7 +20,6 @@ class ArticleViewModel : ViewModel() {
     val articles: LiveData<List<ArticlesItem>> get() = _listArticle // Ensure this is named 'articles'
 
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> get() = _isLoading
 
     private val TAG = "ArticleViewModel"
 

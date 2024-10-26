@@ -1,9 +1,12 @@
+@file:Suppress("unused", "RedundantSuppression")
+
 package com.dicoding.asclepius.view.result
 
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.asclepius.R
@@ -46,7 +49,12 @@ class ResultActivity : AppCompatActivity() {
                 result = resultsText ,
                 image = imageUriString
             )
+            showToast("Prediction saved")
             resultViewModel.saveItem(predictionEntity)
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

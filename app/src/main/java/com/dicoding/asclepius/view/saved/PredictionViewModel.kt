@@ -7,11 +7,13 @@ import com.dicoding.asclepius.data.local.entity.PredictionEntity
 import com.dicoding.asclepius.view.Result
 import kotlinx.coroutines.launch
 
-class SavedPredictionViewModel(private val repository: PredictionRepository) : ViewModel() {
+class PredictionViewModel(private val repository: PredictionRepository) : ViewModel() {
 
     fun getSavedPrediction(): LiveData<Result<List<PredictionEntity>>>{
         return repository.getPredictionItems()
     }
 
-    suspend fun removeItem() = repository.removePrediction()
+    fun removePrediction(id: Int) = viewModelScope.launch {
+        repository.removePrediction(id)
+    }
 }

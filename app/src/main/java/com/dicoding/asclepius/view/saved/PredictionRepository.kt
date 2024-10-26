@@ -3,14 +3,13 @@
 package com.dicoding.asclepius.view.saved
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.map
 import com.dicoding.asclepius.data.local.entity.PredictionEntity
 import com.dicoding.asclepius.data.local.room.PredictionDao
 import com.dicoding.asclepius.view.Result
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PredictionRepository private constructor(
@@ -29,22 +28,18 @@ class PredictionRepository private constructor(
     }
 
     fun getPredictionItems(): LiveData<Result<List<PredictionEntity>>> {
-        val result = MediatorLiveData<Result<List<PredictionEntity>>>()
-        result.value = Result.Loading
-        val localData = predictionDao.getItem()
-        result.addSource(localData) { items ->
-            if (items.isNotEmpty()) {
-                result.value = Result.Success(items)
-            } else {
-                result.value = Result.Error("No saved items")
-            }
+        return predictionDao.getItem().asLiveData().map { items ->
+            if (items.isNotEmpty()) Result.Success(items) else Result.Error("No saved items")
         }
-        return result
     }
 
-    suspend fun removePrediction() {
-        predictionDao.deleteItem()
+
+    suspend fun removePrediction(id: Int) {
+        withContext(Dispatchers.IO) {
+          predictionDao.deleteItem(id)
+        }
     }
+
 
     companion object {
         @Volatile

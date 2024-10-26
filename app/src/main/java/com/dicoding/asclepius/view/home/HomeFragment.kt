@@ -3,7 +3,6 @@ package com.dicoding.asclepius.view.home
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,7 +59,7 @@ class HomeFragment : Fragment(), ImageClassifierHelper.ClassifierListener {
     }
 
     private fun startCrop(uri: Uri) {
-        val destinationUri = Uri.fromFile(File(requireContext().cacheDir, "cropped_image.jpg"))
+        val destinationUri = Uri.fromFile(File(requireContext().cacheDir,  "cropped_image_${System.currentTimeMillis()}.jpg"))
 
         val uCropIntent = UCrop.of(uri, destinationUri)
             .withAspectRatio(1f, 1f)
@@ -81,14 +80,11 @@ class HomeFragment : Fragment(), ImageClassifierHelper.ClassifierListener {
             currentImageUri = uri
             showImage()
             startCrop(uri)
-        } else {
-            Log.d("Photo Picker", "No media selected")
         }
     }
 
     private fun showImage() {
         currentImageUri?.let {
-            Log.d("Image URI", "showImage: $it")
             binding.previewImageView.setImageURI(it)
         }
     }
@@ -105,7 +101,6 @@ class HomeFragment : Fragment(), ImageClassifierHelper.ClassifierListener {
 
     override fun onResults(resultText: String) {
         moveToResult(resultText)
-        Log.d("Classification Results", "Results: $resultText")
     }
 
     private fun moveToResult(resultsText: String) {
