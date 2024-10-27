@@ -55,13 +55,9 @@ class ResultActivity : AppCompatActivity() {
                 result = resultsText ,
                 image = imageUriString
             )
-            showToast("Prediction saved")
+            Toast.makeText(this, "Prediction saved", Toast.LENGTH_SHORT).show()
             resultViewModel.saveItem(predictionEntity)
         }
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     fun showArticle() {
