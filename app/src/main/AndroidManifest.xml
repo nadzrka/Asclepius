@@ -21,6 +21,12 @@
             android:name=".view.result.ResultActivity"
             android:exported="false" />
         <activity
+            android:name=".view.saved.PredictionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.article.ArticleActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.MainActivity"
             android:exported="true" >
             <intent-filter>

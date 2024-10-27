@@ -23,4 +23,6 @@
     <string name="published_date">published date</string>
     <string name="no_result_found">No result found</string>
     <string name="delete">Delete</string>
+    <string name="savedPrediction">Saved Prediction</string>
+    <string name="open_article">List article about cancer:</string>
 </resources>

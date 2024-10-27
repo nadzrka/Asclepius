@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.asclepius.data.remote.response.ArticlesItem
 import com.dicoding.asclepius.databinding.ItemArticleBinding
-import com.dicoding.asclepius.utils.DateFormatter
 import com.dicoding.asclepius.R
 
 class ArticleAdapter : ListAdapter<ArticlesItem, ArticleAdapter.ArticleViewHolder>(DIFF_CALLBACK) {
@@ -22,7 +21,7 @@ class ArticleAdapter : ListAdapter<ArticlesItem, ArticleAdapter.ArticleViewHolde
     inner class ArticleViewHolder(private val binding: ItemArticleBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(article: ArticlesItem) {
             binding.tvItemTitle.text = article.title
-            binding.tvItemPublishedDate.text = DateFormatter.formatDate(article.publishedAt.toString())
+            binding.description.text = article.description
             Glide.with(itemView.context)
                 .load(article.urlToImage)
                 .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))

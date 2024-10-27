@@ -15,6 +15,7 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
+        buildConfigField ("String", "BASE_URL", "\"https://newsapi.org/v2/\"")
         buildConfigField ("String", "API_KEY", "\"873ff49adf6b42ebadf01bbeeec22e78\"")
 
 

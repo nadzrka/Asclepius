@@ -8,7 +8,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.dicoding.asclepius.data.local.entity.PredictionEntity
 
-@Database(entities = [PredictionEntity::class], version = 4, exportSchema = false)
+@Database(entities = [PredictionEntity::class], version = 1, exportSchema = false)
 abstract class PredictionDatabase : RoomDatabase() {
 
     abstract fun eventDao(): PredictionDao
