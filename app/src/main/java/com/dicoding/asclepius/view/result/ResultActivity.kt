@@ -32,8 +32,11 @@ class ResultActivity : AppCompatActivity() {
         val resultImageView: ImageView = findViewById(R.id.result_image)
         resultsTextView = findViewById(R.id.result_text)
 
-        val resultsText: String? = intent.getStringExtra("RESULTS")
-        resultsTextView.text = resultsText ?: getString(R.string.no_results_found)
+        val resultsCategory: String? = intent.getStringExtra("RESULTS")
+        val resultsScore: String? = intent.getStringExtra("SCORE")
+
+        binding.categoryText.text = resultsCategory
+        binding.scoreText.text = resultsScore
 
         val imageUriString = intent.getStringExtra("IMAGE_URI")
         imageUriString?.let { imageUri ->
@@ -41,7 +44,7 @@ class ResultActivity : AppCompatActivity() {
         }
 
         binding.saveButton.setOnClickListener {
-            saveToDatabase(resultsText, imageUriString)
+            saveToDatabase(resultsCategory, resultsScore, imageUriString)
         }
 
         binding.articleButton.setOnClickListener {
@@ -49,15 +52,15 @@ class ResultActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveToDatabase(resultsText: String?, imageUriString: String?) {
-        if (!resultsText.isNullOrEmpty() && !imageUriString.isNullOrEmpty()) {
+    private fun saveToDatabase(resultsCategory: String?, resultScore: String?,imageUriString: String?) {
             val predictionEntity = PredictionEntity(
-                result = resultsText ,
-                image = imageUriString
+                category = resultsCategory ?: "",
+                score = resultScore ?: "",
+                image = imageUriString ?: ""
             )
             Toast.makeText(this, "Prediction saved", Toast.LENGTH_SHORT).show()
             resultViewModel.saveItem(predictionEntity)
-        }
+
     }
 
     fun showArticle() {

@@ -21,7 +21,7 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/category_text"
+            android:id="@+id/result_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -30,12 +30,25 @@
             app:layout_constraintTop_toBottomOf="@id/result_image" />
 
         <TextView
-            android:id="@+id/result_text"
-            android:layout_width="match_parent"
+            android:id="@+id/category_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@string/result"
-            app:layout_constraintTop_toBottomOf="@id/category_text" />
+            android:text="@string/category"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/result_text" />
+
+        <TextView
+            android:id="@+id/score_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/score"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/category_text"
+            app:layout_constraintTop_toBottomOf="@id/result_text" />
 
         <Button
             android:id="@+id/saveButton"
@@ -48,7 +61,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/result_text" />
+            app:layout_constraintTop_toBottomOf="@id/category_text" />
 
         <TextView
             android:id="@+id/article"

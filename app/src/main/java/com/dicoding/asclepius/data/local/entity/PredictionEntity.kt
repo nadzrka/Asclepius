@@ -15,6 +15,9 @@ data class PredictionEntity(
     @ColumnInfo(name = "image")
     val image: String,
 
-    @ColumnInfo(name = "result")
-    val result: String
+    @ColumnInfo(name = "category")
+    val category: String,
+
+    @ColumnInfo(name = "score")
+    val score: String
 )

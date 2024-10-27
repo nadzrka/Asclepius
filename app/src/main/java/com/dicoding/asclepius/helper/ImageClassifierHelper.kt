@@ -58,9 +58,9 @@ class ImageClassifierHelper(
 
         val highestCategory = results.first().categories.firstOrNull()
         if (highestCategory != null) {
-            val category = highestCategory.label
-            val score = String.format(Locale.US, "%.2f", highestCategory.score * 100)
-            classifierListener?.onResults("$category: $score%")
+            val resultsCategory = highestCategory.label
+            val resultsScore = String.format(Locale.US, "%.2f", highestCategory.score * 100)
+            classifierListener?.onResults(resultsCategory, "$resultsScore%")
         } else {
             classifierListener?.onError(context.getString(R.string.no_result_found))
         }
@@ -78,7 +78,7 @@ class ImageClassifierHelper(
 
     interface ClassifierListener {
         fun onError(error: String)
-        fun onResults(resultText: String)
+        fun onResults(resultsCategory: String, resultsScore: String)
     }
 
     companion object {

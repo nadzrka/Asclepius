@@ -90,14 +90,15 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
         showToast(error)
     }
 
-    override fun onResults(resultText: String) {
-        moveToResult(resultText)
+    override fun onResults(resultsCategory: String, resultsScore: String) {
+        moveToResult(resultsCategory, resultsScore)
     }
 
-    private fun moveToResult(resultsText: String) {
+    private fun moveToResult(resultsCategory: String, resultsScore: String) {
         currentImageUri?.let { imageUri ->
             val intent = Intent(this, ResultActivity::class.java).apply {
-                putExtra("RESULTS", resultsText)
+                putExtra("RESULTS", resultsCategory)
+                putExtra("SCORE", resultsScore)
                 putExtra("IMAGE_URI", imageUri.toString())
             }
             startActivity(intent)

@@ -36,7 +36,8 @@ class PredictionAdapter(
                 .load(item.image)
                 .into(binding.resultImage)
 
-            binding.resultText.text = item.result
+            binding.resultCategory.text = item.category
+            binding.resultScore.text = item.score
             binding.buttonDelete.setOnClickListener {
                 predictionViewModel.removePrediction(item.id)
             }

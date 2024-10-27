@@ -14,4 +14,6 @@
     <string name="delete">Delete</string>
     <string name="savedPrediction">Saved Prediction</string>
     <string name="open_article">List article about cancer:</string>
+    <string name="score">Score</string>
+    <string name="category">Category</string>
 </resources>
