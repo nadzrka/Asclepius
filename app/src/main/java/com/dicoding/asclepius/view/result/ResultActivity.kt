@@ -2,7 +2,6 @@
 
 package com.dicoding.asclepius.view.result
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageView
@@ -14,7 +13,6 @@ import com.dicoding.asclepius.R
 import com.dicoding.asclepius.databinding.ActivityResultBinding
 import com.dicoding.asclepius.data.local.entity.PredictionEntity
 import com.dicoding.asclepius.view.ViewModelFactory
-import com.dicoding.asclepius.view.article.ArticleActivity
 
 class ResultActivity : AppCompatActivity() {
     private val resultViewModel by viewModels<ResultViewModel> {
@@ -46,10 +44,6 @@ class ResultActivity : AppCompatActivity() {
         binding.saveButton.setOnClickListener {
             saveToDatabase(resultsCategory, resultsScore, imageUriString)
         }
-
-        binding.articleButton.setOnClickListener {
-            showArticle()
-        }
     }
 
     private fun saveToDatabase(resultsCategory: String?, resultScore: String?,imageUriString: String?) {
@@ -61,10 +55,5 @@ class ResultActivity : AppCompatActivity() {
             Toast.makeText(this, "Prediction saved", Toast.LENGTH_SHORT).show()
             resultViewModel.saveItem(predictionEntity)
 
-    }
-
-    fun showArticle() {
-        val intent = Intent(this, ArticleActivity::class.java)
-        startActivity(intent)
     }
 }

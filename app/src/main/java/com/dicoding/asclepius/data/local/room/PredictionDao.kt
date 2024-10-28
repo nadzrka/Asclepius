@@ -13,7 +13,7 @@ interface PredictionDao {
     @Query("SELECT * FROM prediction")
     fun getItem(): Flow<List<PredictionEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertItem(prediction: PredictionEntity)
 
     @Query("SELECT * FROM prediction WHERE id = :id")

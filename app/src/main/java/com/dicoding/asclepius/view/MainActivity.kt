@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts.StartActivityFo
 import com.dicoding.asclepius.R
 import com.dicoding.asclepius.databinding.ActivityMainBinding
 import com.dicoding.asclepius.helper.ImageClassifierHelper
+import com.dicoding.asclepius.view.article.ArticleActivity
 import com.dicoding.asclepius.view.result.ResultActivity
 import com.dicoding.asclepius.view.saved.PredictionActivity
 import com.yalantis.ucrop.UCrop
@@ -45,6 +46,10 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
         binding.galleryButton.setOnClickListener { startGallery() }
         binding.analyzeButton.setOnClickListener { analyzeImage() }
         binding.savedPredictionButton.setOnClickListener { showSavedPrediction() }
+
+        binding.articleButton.setOnClickListener {
+            showArticle()
+        }
 
         imageClassifierHelper = ImageClassifierHelper(context = this, classifierListener = this)
     }
@@ -111,6 +116,12 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
 
     fun showSavedPrediction() {
         val intent = Intent(this, PredictionActivity::class.java)
+        startActivity(intent)
+    }
+
+
+    fun showArticle() {
+        val intent = Intent(this, ArticleActivity::class.java)
         startActivity(intent)
     }
 
