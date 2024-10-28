@@ -1,5 +1,3 @@
-@file:Suppress("unused", "RedundantSuppression")
-
 package com.dicoding.asclepius.view.article
 
 import android.util.Log
@@ -17,7 +15,7 @@ import retrofit2.Response
 class ArticleViewModel : ViewModel() {
 
     private val _listArticle = MutableLiveData<List<ArticlesItem>>()
-    val articles: LiveData<List<ArticlesItem>> get() = _listArticle // Ensure this is named 'articles'
+    val articles: LiveData<List<ArticlesItem>> get() = _listArticle
 
     private val _isLoading = MutableLiveData<Boolean>()
 
@@ -35,7 +33,7 @@ class ArticleViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        _listArticle.value = responseBody.articles?.filterNotNull() ?: emptyList()
+                        _listArticle.value = responseBody.articles.filterNotNull()
                     }
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")

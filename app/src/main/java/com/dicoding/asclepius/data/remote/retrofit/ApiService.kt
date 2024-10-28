@@ -1,5 +1,3 @@
-@file:Suppress("unused", "RedundantSuppression")
-
 package com.dicoding.asclepius.data.remote.retrofit
 
 import com.dicoding.asclepius.data.remote.response.ArticleResponse

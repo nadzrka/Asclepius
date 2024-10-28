@@ -1,5 +1,3 @@
-@file:Suppress("unused", "RedundantSuppression")
-
 package com.dicoding.asclepius.view
 
 sealed class Result<out R> {

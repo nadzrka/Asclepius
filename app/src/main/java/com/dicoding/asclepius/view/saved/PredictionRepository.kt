@@ -1,5 +1,3 @@
-@file:Suppress("unused", "RedundantSuppression")
-
 package com.dicoding.asclepius.view.saved
 
 import androidx.lifecycle.LiveData
@@ -15,12 +13,6 @@ import kotlinx.coroutines.withContext
 class PredictionRepository private constructor(
     private val predictionDao: PredictionDao
 ) {
-    private val _showToastMessage = MutableLiveData<String>()
-    val showToastMessage: LiveData<String> get() = _showToastMessage
-
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> get() = _isLoading
-
     suspend fun setPrediction(prediction: PredictionEntity) {
         withContext(Dispatchers.IO) {
             predictionDao.insertItem(prediction)

@@ -16,9 +16,10 @@ import com.dicoding.asclepius.view.result.ResultActivity
 import com.dicoding.asclepius.view.saved.PredictionActivity
 import com.yalantis.ucrop.UCrop
 import java.io.File
+import java.util.UUID
 
 class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListener {
-    private lateinit var binding: ActivityMainBinding
+    private var binding: ActivityMainBinding? = null
     private var currentImageUri: Uri? = null
     private lateinit var imageClassifierHelper: ImageClassifierHelper
 
@@ -41,27 +42,30 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding?.root)
 
-        binding.galleryButton.setOnClickListener { startGallery() }
-        binding.analyzeButton.setOnClickListener { analyzeImage() }
-        binding.savedPredictionButton.setOnClickListener { showSavedPrediction() }
+        currentImageUri = savedInstanceState?.getParcelable("CURRENT_IMAGE_URI")
+        showImage()
 
-        binding.articleButton.setOnClickListener {
-            showArticle()
-        }
+        binding?.galleryButton?.setOnClickListener { startGallery() }
+        binding?.analyzeButton?.setOnClickListener { analyzeImage() }
+        binding?.savedPredictionButton?.setOnClickListener { showSavedPrediction() }
+        binding?.articleButton?.setOnClickListener { showArticle() }
 
         imageClassifierHelper = ImageClassifierHelper(context = this, classifierListener = this)
     }
 
-    private fun startCrop(uri: Uri) {
-        val destinationUri = Uri.fromFile(File(this.cacheDir,  "cropped_image_${System.currentTimeMillis()}.jpg"))
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable("CURRENT_IMAGE_URI", currentImageUri)
+    }
 
+    private fun startCrop(uri: Uri) {
+        val destinationUri = Uri.fromFile(File(this.cacheDir, "cropped_image_${UUID.randomUUID()}.jpg"))
         val uCropIntent = UCrop.of(uri, destinationUri)
             .withAspectRatio(1f, 1f)
             .withMaxResultSize(224, 224)
             .getIntent(this)
-
         cropImageLauncher.launch(uCropIntent)
     }
 
@@ -81,7 +85,7 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
 
     private fun showImage() {
         currentImageUri?.let {
-            binding.previewImageView.setImageURI(it)
+            binding?.previewImageView?.setImageURI(it)
         }
     }
 
@@ -114,15 +118,13 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    fun showSavedPrediction() {
+    private fun showSavedPrediction() {
         val intent = Intent(this, PredictionActivity::class.java)
         startActivity(intent)
     }
 
-
-    fun showArticle() {
+    private fun showArticle() {
         val intent = Intent(this, ArticleActivity::class.java)
         startActivity(intent)
     }
-
 }

@@ -1,5 +1,3 @@
-@file:Suppress("unused", "RedundantSuppression")
-
 package com.dicoding.asclepius.data.local.room
 
 import android.content.Context
